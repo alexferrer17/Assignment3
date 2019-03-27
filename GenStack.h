@@ -8,12 +8,12 @@ template <class T> class GenStack {
 private:
   int maxsize = 10; //max size
   int top;
-  bool overflow;
-  bool underflow;
+  bool overflow; //checks upper boundry of the stack
+  bool underflow; //checks upper boundry of the stack
   T stack[];
 
 public:
-  GenStack(){ //
+  GenStack(){ //constructor
     top = -1;
     overflow = false;
     underflow = true;
@@ -24,7 +24,7 @@ public:
     //destructor
   }
 
-  bool isEmpty(){
+  bool isEmpty(){ //checks if the stack is empty
     if(top<0)
     {
       underflow = true;
@@ -36,7 +36,7 @@ public:
     return underflow;
   }
 
-  bool isFull(){
+  bool isFull(){ //checks if the stack is full
     if(top >= (maxsize-1))
     {
       overflow = true;
@@ -48,7 +48,7 @@ public:
     return overflow;
   }
 
-  void printStack(){
+  void printStack(){ //returns stack
     if(!isEmpty())
     {
       for(int i=top;i>=0;i--)
@@ -65,7 +65,7 @@ public:
     }
   }
 
-  void push(T value){
+  void push(T value){ //inserts element to stack
     if(!isFull())
     {
       top++;
@@ -73,7 +73,7 @@ public:
     }
   }
 
-  T pop(){
+  T pop(){ //returns top element and deletes it
     T temp;
     if(!isEmpty())
     {
@@ -87,7 +87,7 @@ public:
     }
   }
 
-  T peek(){
+  T peek(){ //returns top element
     T temp;
     if(!isEmpty())
     {
